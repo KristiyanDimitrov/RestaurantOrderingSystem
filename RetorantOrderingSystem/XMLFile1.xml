@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Schedulle>
+  <Waiters>
+    <Waiter name="Daisy" Capacity ="3">
+      <Availability>
+        Monday,Tuesday,Wednesday,Thursday
+      </Availability>
+      <Working>
+      </Working>
+    </Waiter>
+    <Waiter name="Monica" Capacity ="3">
+      <Availability>
+        Monday,Tuesday,Wednesday,Thursday,Friday
+      </Availability>
+      <Working>
+      </Working>
+    </Waiter>
+    <Waiter name="Alex" Capacity ="2">
+      <Availability>
+        Monday,Tuesday,Saturday,Sunday
+      </Availability>
+      <Working>
+      </Working>
+    </Waiter>
+    <Waiter name="Lisa" Capacity ="2">
+      <Availability>
+        Monday,Tuesday,Wednesday,Sunday
+      </Availability>
+      <Working>
+      </Working>
+    </Waiter>
+    <Waiter name="Daren" Capacity ="3">
+      <Availability>
+        Wednesday,Thursday,Friday,Saturday
+      </Availability>
+      <Working>
+      </Working>
+    </Waiter>
+    <Waiter name="David" Capacity ="2">
+      <Availability>
+        Sunday,Saturday,Thursday,Friday
+      </Availability>
+      <Working>  
+      </Working>
+    </Waiter>
+  </Waiters>
+</Schedulle>
+
+
+
+{ {"Daisy", 3},{"Monica", 3},{"Alex", 2},{"Lisa", 2},{"Daren",3 },{"David",2} };
