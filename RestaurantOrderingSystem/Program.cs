@@ -20,10 +20,29 @@ namespace RestaurantOrderingSystem
 
             Customer A = new Customer(3, 8); // Normal
             System.Diagnostics.Debug.WriteLine("PASS 1");
-            Customer B = new Customer(4, 9); // More People than table capacity
-            System.Diagnostics.Debug.WriteLine("PASS 2");
-            Customer C = new Customer(22, 3); // Table doesn't exist
-            System.Diagnostics.Debug.WriteLine("PASS 3");
+
+            try
+            {
+                System.Diagnostics.Debug.WriteLine("PASS 2");
+                Customer B = new Customer(4, 9); // More People than table capacity
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("ERROR--------2");
+                System.Diagnostics.Debug.WriteLine(e);
+            }
+
+            try
+            {
+                System.Diagnostics.Debug.WriteLine("PASS 3");
+                Customer C = new Customer(3, 22); // Table doesn't exist
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("ERROR----------3");
+                System.Diagnostics.Debug.WriteLine(e);
+            }
+            Console.WriteLine("TEST");
 
 
 

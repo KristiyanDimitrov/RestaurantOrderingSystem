@@ -17,12 +17,14 @@ namespace RestaurantOrderingSystem
 
         private int FindTable(int customerNumber, int TableNumber = -1) // If table number provided see if it's available. If not provided try to find a table
         {
-            if (TableNumber < 1 && TableNumber > tables.Values.Count)
-                throw new ApplicationException("Table doesn't exsist");
-            else if (TableNumber != -1 && !takenTables.Contains(TableNumber))
+            if (TableNumber > 0 && TableNumber > tables.Values.Count)
+                throw new Exception("Table doesn't exsist");       
+            else if (TableNumber > 0 && takenTables.Contains(TableNumber))
+                throw new Exception("Table already taken");
+            else if (TableNumber > 0 && !takenTables.Contains(TableNumber) && tables[TableNumber] < customerNumber)
+                throw new Exception("Table not big enough!");
+            else if (TableNumber > 0 && !takenTables.Contains(TableNumber) )
                 return TableNumber;
-            else if (TableNumber != -1 && takenTables.Contains(TableNumber))
-                throw new ApplicationException("Table already taken");
 
 
             for (int i = 0; i <= tables.Count; i++)
@@ -35,7 +37,7 @@ namespace RestaurantOrderingSystem
                 return i;
 
             }
-            throw new ApplicationException("No Available Tables");
+            throw new Exception("No Available Tables");
         }
 
         private Waiters AllocateWaiter ()
@@ -45,25 +47,25 @@ namespace RestaurantOrderingSystem
 
             for (int i = 0; i < Waiters.WaiterList.Count; i++)
             {
-                if (Waiters.WaiterList[i].Capacity > maxCapacity)
+                if (Waiters.WaiterList[i].capacity > maxCapacity)
                 {
-                    maxCapacity = Waiters.WaiterList[i].Capacity;
+                    maxCapacity = Waiters.WaiterList[i].capacity;
                     waiterID = i;
                 }               
             }
             if (waiterID != -1)
             {
-                Waiters.WaiterList[waiterID].Capacity = Waiters.WaiterList[waiterID].Capacity - 1;
+                Waiters.WaiterList[waiterID].capacity = Waiters.WaiterList[waiterID].capacity - 1;
                 return Waiters.WaiterList[waiterID];
             }
             else
-                throw new ApplicationException("No Available Waiter");
+                throw new Exception("No Available Waiter");
 
         }
 
         public void PayBill()
         {
-            _allocatedWaiter.Capacity = _allocatedWaiter.Capacity + 1;
+            _allocatedWaiter.capacity = _allocatedWaiter.capacity + 1;
             takenTables.Remove(_tableNumber);
         }
 

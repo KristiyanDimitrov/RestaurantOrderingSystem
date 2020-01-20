@@ -10,28 +10,26 @@ namespace RestaurantOrderingSystem
     {
         private Waiters(string Name, int Capacity,List<string> Availability)
         {
-            this._name = Name;
-            this._capacity = Capacity;
-            this._availability = Availability;
+            this.name = Name;
+            this.capacity = Capacity;
+            this.availability = Availability;
         }
 
         public static List<Waiters> WaiterList { get; set; }
         public static XmlDocument WaiterSchedule;
 
-        private string _name;
-        private int _capacity;
-        private List<string> _availability;
+        public string name { get; set; }
+        public int capacity { get; set; }
+        public List<string> availability { get; set; }
 
 
         public string Name {
-            get { return _name; }
+            get { return name; }
             set
             {
-                _name = value;
+                name = value;
             }
         }
-        public int Capacity { get; set; }
-        public List<string> Availability { get; set; }
         
 
         public static void BufferStaff()
